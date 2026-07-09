@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nama Anda — Computer Engineer</title>
+<style>
+  :root{
+    --bg:#0A120E;
+    --bg-panel:#0F1B14;
+    --line:#1E332A;
+    --copper:#C9A15A;
+    --cyan:#5FD8C9;
+    --text:#E7EFE9;
+    --muted:#87988E;
+    --font-display:'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+    --font-body:'Inter', system-ui, sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  a{color:inherit; text-decoration:none;}
+
+  /* faint PCB grid background */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:48px 48px;
+    opacity:.15;
+    pointer-events:none;
+    z-index:0;
+  }
+
+  .wrap{max-width:1040px; margin:0 auto; padding:0 24px; position:relative; z-index:1;}
+
+  /* NAV */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(10,18,14,.85);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:64px;}
+  .logo{
+    font-family:var(--font-display);
+    font-size:15px; letter-spacing:.05em;
+    color:var(--copper);
+    display:flex; align-items:center; gap:8px;
+  }
+  .logo .dot{width:6px;height:6px;border-radius:50%;background:var(--cyan); box-shadow:0 0 8px var(--cyan); animation:pulse 2s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+  .navlinks{display:flex; gap:28px; font-family:var(--font-display); font-size:13px; color:var(--muted);}
+  .navlinks a:hover{color:var(--cyan);}
+  .navlinks .idx{color:var(--copper); margin-right:4px;}
+  .navtoggle{display:none; background:none; border:1px solid var(--line); color:var(--text); font-family:var(--font-display); font-size:12px; padding:6px 10px; border-radius:4px; cursor:pointer;}
+
+  @media(max-width:720px){
+    .navlinks{display:none;}
+    .navtoggle{display:block;}
+    .navlinks.open{
+      display:flex; flex-direction:column; position:absolute; top:64px; left:0; right:0;
+      background:var(--bg-panel); padding:20px 24px; border-bottom:1px solid var(--line); gap:16px;
+    }
+  }
+
+  /* HERO */
+  header.hero{
+    min-height:88vh; display:flex; align-items:center;
+    padding:80px 0 40px;
+    position:relative;
+  }
+  .terminal{
+    font-family:var(--font-display);
+    font-size:13px; color:var(--cyan);
+    margin-bottom:24px;
+    min-height:20px;
+  }
+  .terminal .caret{display:inline-block; width:8px; height:14px; background:var(--cyan); margin-left:4px; animation:blink 1s step-end infinite; vertical-align:middle;}
+  @keyframes blink{50%{opacity:0;}}
+  .hero h1{
+    font-family:var(--font-display);
+    font-size:clamp(36px, 7vw, 64px);
+    line-height:1.05;
+    letter-spacing:-.01em;
+    margin-bottom:16px;
+  }
+  .hero h1 .accent{color:var(--copper);}
+  .hero p.tagline{
+    font-size:18px; color:var(--muted); max-width:560px; margin-bottom:32px;
+  }
+  .cta-row{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{
+    font-family:var(--font-display); font-size:13px;
+    padding:13px 22px; border-radius:4px; border:1px solid var(--copper);
+    color:var(--copper); transition:.2s;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn:hover{background:var(--copper); color:var(--bg);}
+  .btn.ghost{border-color:var(--line); color:var(--muted);}
+  .btn.ghost:hover{border-color:var(--cyan); color:var(--cyan); background:none;}
+
+  /* SECTION LABELS - like PCB silkscreen designators */
+  section{padding:100px 0; position:relative; border-top:1px solid var(--line);}
+  .sec-label{
+    font-family:var(--font-display); font-size:13px; color:var(--copper);
+    letter-spacing:.1em; text-transform:uppercase; margin-bottom:8px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .sec-label::before{content:""; width:20px; height:1px; background:var(--copper);}
+  .sec-title{font-family:var(--font-display); font-size:clamp(24px,4vw,32px); margin-bottom:40px;}
+
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ABOUT */
+  .about-grid{display:grid; grid-template-columns:1.3fr .7fr; gap:48px;}
+  @media(max-width:720px){.about-grid{grid-template-columns:1fr;}}
+  .about-grid p{color:var(--muted); margin-bottom:16px; max-width:520px;}
+  .specs{
+    background:var(--bg-panel); border:1px solid var(--line); border-radius:6px; padding:24px;
+    font-family:var(--font-display); font-size:13px;
+  }
+  .specs div{display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px dashed var(--line);}
+  .specs div:last-child{border-bottom:none;}
+  .specs span:first-child{color:var(--muted);}
+  .specs span:last-child{color:var(--text);}
+
+  /* SKILLS */
+  .skill-cols{display:grid; grid-template-columns:repeat(3,1fr); gap:32px;}
+  @media(max-width:720px){.skill-cols{grid-template-columns:1fr;}}
+  .skill-col h3{font-family:var(--font-display); font-size:14px; color:var(--cyan); margin-bottom:16px; letter-spacing:.05em;}
+  .tag-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .tag{
+    font-family:var(--font-display); font-size:12px; color:var(--text);
+    border:1px solid var(--line); padding:6px 12px; border-radius:20px;
+    background:var(--bg-panel); transition:.2s;
+  }
+  .tag:hover{border-color:var(--copper); color:var(--copper);}
+
+  /* PROJECTS */
+  .proj-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:24px;}
+  @media(max-width:720px){.proj-grid{grid-template-columns:1fr;}}
+  .proj-card{
+    background:var(--bg-panel); border:1px solid var(--line); border-radius:8px;
+    padding:28px; transition:.25s; position:relative; overflow:hidden;
+  }
+  .proj-card:hover{border-color:var(--cyan); transform:translateY(-3px);}
+  .proj-id{font-family:var(--font-display); font-size:12px; color:var(--copper); margin-bottom:12px;}
+  .proj-card h3{font-family:var(--font-display); font-size:18px; margin-bottom:10px;}
+  .proj-card p{color:var(--muted); font-size:14px; margin-bottom:16px;}
+  .proj-stack{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px;}
+  .proj-stack span{font-family:var(--font-display); font-size:11px; color:var(--cyan); background:rgba(95,216,201,.08); padding:3px 8px; border-radius:4px;}
+  .proj-links{display:flex; gap:16px; font-family:var(--font-display); font-size:12px;}
+  .proj-links a{color:var(--muted); border-bottom:1px solid transparent;}
+  .proj-links a:hover{color:var(--text); border-color:var(--text);}
+
+  /* EXPERIENCE */
+  .timeline{border-left:1px solid var(--line); padding-left:32px; display:flex; flex-direction:column; gap:36px;}
+  .tl-item{position:relative;}
+  .tl-item::before{
+    content:""; position:absolute; left:-38px; top:4px; width:9px; height:9px; border-radius:50%;
+    background:var(--bg); border:2px solid var(--cyan);
+  }
+  .tl-meta{font-family:var(--font-display); font-size:12px; color:var(--copper); margin-bottom:6px;}
+  .tl-item h3{font-size:17px; margin-bottom:6px;}
+  .tl-item p{color:var(--muted); font-size:14px;}
+
+  /* CONTACT */
+  .contact-box{
+    background:var(--bg-panel); border:1px solid var(--line); border-radius:8px;
+    padding:48px; text-align:center;
+  }
+  .contact-box p{color:var(--muted); max-width:480px; margin:0 auto 28px;}
+  .contact-links{display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:28px;}
+  .contact-links a{font-family:var(--font-display); font-size:13px; color:var(--muted); border-bottom:1px solid var(--line); padding-bottom:2px;}
+  .contact-links a:hover{color:var(--cyan); border-color:var(--cyan);}
+
+  footer{padding:32px 0; text-align:center; font-family:var(--font-display); font-size:12px; color:var(--muted); border-top:1px solid var(--line);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo"><span class="dot"></span>N.A — CE</div>
+    <div class="navlinks" id="navlinks">
+      <a href="#about"><span class="idx">01</span>Tentang</a>
+      <a href="#skills"><span class="idx">02</span>Keahlian</a>
+      <a href="#projects"><span class="idx">03</span>Proyek</a>
+      <a href="#experience"><span class="idx">04</span>Pengalaman</a>
+      <a href="#contact"><span class="idx">05</span>Kontak</a>
+    </div>
+    <button class="navtoggle" id="navtoggle">MENU</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="terminal" id="terminal"></div>
+    <h1>Nama Anda<br><span class="accent">Computer Engineer.</span></h1>
+    <p class="tagline">Merancang sistem di titik temu perangkat keras dan perangkat lunak — dari firmware embedded hingga arsitektur backend. Ganti teks ini dengan ringkasan singkat tentang fokus dan keahlian Anda.</p>
+    <div class="cta-row">
+      <a href="#projects" class="btn">Lihat Proyek →</a>
+      <a href="#contact" class="btn ghost">Hubungi Saya</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap reveal">
+    <div class="sec-label">01 / Tentang</div>
+    <h2 class="sec-title">Profil Singkat</h2>
+    <div class="about-grid">
+      <div>
+        <p>Tulis 2–3 paragraf tentang latar belakang Anda: pendidikan (mis. S1 Teknik Komputer), minat utama (embedded systems, jaringan, arsitektur komputer, software engineering), dan apa yang membuat pendekatan Anda berbeda.</p>
+        <p>Ceritakan juga proyek atau pencapaian yang paling Anda banggakan, dan ke arah mana karier Anda sedang menuju.</p>
+      </div>
+      <div class="specs">
+        <div><span>Lokasi</span><span>Kota, Indonesia</span></div>
+        <div><span>Fokus</span><span>Embedded / Software</span></div>
+        <div><span>Pendidikan</span><span>S1 Teknik Komputer</span></div>
+        <div><span>Status</span><span>Terbuka untuk kerja</span></div>
+        <div><span>Bahasa</span><span>ID / EN</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap reveal">
+    <div class="sec-label">02 / Keahlian</div>
+    <h2 class="sec-title">Tumpukan Teknologi</h2>
+    <div class="skill-cols">
+      <div class="skill-col">
+        <h3>HARDWARE</h3>
+        <div class="tag-row">
+          <span class="tag">Arduino / STM32</span>
+          <span class="tag">Verilog / VHDL</span>
+          <span class="tag">PCB Design</span>
+          <span class="tag">RTOS</span>
+        </div>
+      </div>
+      <div class="skill-col">
+        <h3>SOFTWARE</h3>
+        <div class="tag-row">
+          <span class="tag">C / C++</span>
+          <span class="tag">Python</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">SQL</span>
+        </div>
+      </div>
+      <div class="skill-col">
+        <h3>TOOLS</h3>
+        <div class="tag-row">
+          <span class="tag">Git</span>
+          <span class="tag">Linux</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Wireshark</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap reveal">
+    <div class="sec-label">03 / Proyek</div>
+    <h2 class="sec-title">Proyek Pilihan</h2>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <div class="proj-id">U1</div>
+        <h3>Nama Proyek Satu</h3>
+        <p>Deskripsi singkat: masalah yang dipecahkan, pendekatan yang diambil, dan hasilnya.</p>
+        <div class="proj-stack"><span>C++</span><span>STM32</span><span>FreeRTOS</span></div>
+        <div class="proj-links"><a href="#">GitHub →</a><a href="#">Demo →</a></div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-id">U2</div>
+        <h3>Nama Proyek Dua</h3>
+        <p>Deskripsi singkat: masalah yang dipecahkan, pendekatan yang diambil, dan hasilnya.</p>
+        <div class="proj-stack"><span>Python</span><span>Flask</span><span>PostgreSQL</span></div>
+        <div class="proj-links"><a href="#">GitHub →</a><a href="#">Demo →</a></div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-id">U3</div>
+        <h3>Nama Proyek Tiga</h3>
+        <p>Deskripsi singkat: masalah yang dipecahkan, pendekatan yang diambil, dan hasilnya.</p>
+        <div class="proj-stack"><span>Verilog</span><span>FPGA</span></div>
+        <div class="proj-links"><a href="#">GitHub →</a><a href="#">Demo →</a></div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-id">U4</div>
+        <h3>Nama Proyek Empat</h3>
+        <p>Deskripsi singkat: masalah yang dipecahkan, pendekatan yang diambil, dan hasilnya.</p>
+        <div class="proj-stack"><span>React</span><span>Node.js</span></div>
+        <div class="proj-links"><a href="#">GitHub →</a><a href="#">Demo →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap reveal">
+    <div class="sec-label">04 / Pengalaman</div>
+    <h2 class="sec-title">Riwayat Kerja & Pendidikan</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-meta">2025 — Sekarang</div>
+        <h3>Posisi / Peran</h3>
+        <p>Nama Perusahaan atau Organisasi — deskripsi singkat tanggung jawab dan pencapaian.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-meta">2023 — 2025</div>
+        <h3>Posisi Sebelumnya</h3>
+        <p>Nama Perusahaan atau Organisasi — deskripsi singkat tanggung jawab dan pencapaian.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-meta">2019 — 2023</div>
+        <h3>S1 Teknik Komputer</h3>
+        <p>Nama Universitas — fokus studi, organisasi, atau proyek tugas akhir yang relevan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap reveal">
+    <div class="sec-label">05 / Kontak</div>
+    <h2 class="sec-title">Mari Terhubung</h2>
+    <div class="contact-box">
+      <p>Terbuka untuk peluang, kolaborasi, atau sekadar diskusi seputar sistem embedded dan rekayasa perangkat lunak. Kirim pesan lewat email atau temukan saya di platform berikut.</p>
+      <a href="mailto:nama@email.com" class="btn">nama@email.com</a>
+      <div class="contact-links">
+        <a href="#">GitHub</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">CV (PDF)</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Nama Anda. Dibuat dengan HTML &amp; CSS.</footer>
+
+<script>
+  // typing terminal effect
+  const line = "> whoami";
+  const el = document.getElementById('terminal');
+  let i = 0;
+  function type(){
+    if(i <= line.length){
+      el.innerHTML = line.slice(0,i) + '<span class="caret"></span>';
+      i++;
+      setTimeout(type, 60);
+    }
+  }
+  type();
+
+  // mobile nav toggle
+  document.getElementById('navtoggle').addEventListener('click', () => {
+    document.getElementById('navlinks').classList.toggle('open');
+  });
+
+  // scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+  }, {threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
