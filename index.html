@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -78,15 +78,8 @@
     padding:80px 0 40px;
     position:relative;
   }
-  .terminal{
-    font-family:var(--font-display);
-    font-size:13px; color:var(--cyan);
-    margin-bottom:24px;
-    min-height:20px;
-  }
-  .terminal .caret{display:inline-block; width:8px; height:14px; background:var(--cyan); margin-left:4px; animation:blink 1s step-end infinite; vertical-align:middle;}
-  @keyframes blink{50%{opacity:0;}}
   .hero h1{
+    margin-top:8px;
     font-family:var(--font-display);
     font-size:clamp(36px, 7vw, 64px);
     line-height:1.05;
@@ -154,6 +147,15 @@
     padding:28px; transition:.25s; position:relative; overflow:hidden;
   }
   .proj-card:hover{border-color:var(--cyan); transform:translateY(-3px);}
+  .proj-img{
+    width:100%; aspect-ratio:16/9; border-radius:6px; margin-bottom:18px;
+    border:1px dashed var(--line); background:rgba(255,255,255,.02);
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
+  }
+  .proj-img img{width:100%; height:100%; object-fit:cover; display:block;}
+  .proj-img .placeholder-txt{
+    font-family:var(--font-display); font-size:11px; color:var(--muted); text-align:center; padding:0 16px;
+  }
   .proj-id{font-family:var(--font-display); font-size:12px; color:var(--copper); margin-bottom:12px;}
   .proj-card h3{font-family:var(--font-display); font-size:18px; margin-bottom:10px;}
   .proj-card p{color:var(--muted); font-size:14px; margin-bottom:16px;}
@@ -191,13 +193,13 @@
 
 <nav>
   <div class="wrap">
-    <div class="logo"><span class="dot"></span>A.U.S — CE</div>
+    <div class="logo"><span class="dot"></span>Asyam U.S — CE</div>
     <div class="navlinks" id="navlinks">
-      <a href="#about"><span class="idx">01</span>Tentang</a>
-      <a href="#skills"><span class="idx">02</span>Keahlian</a>
-      <a href="#projects"><span class="idx">03</span>Proyek</a>
-      <a href="#experience"><span class="idx">04</span>Pengalaman</a>
-      <a href="#contact"><span class="idx">05</span>Kontak</a>
+      <a href="#about"><span class="idx">01</span>About</a>
+      <a href="#skills"><span class="idx">02</span>Skills</a>
+      <a href="#projects"><span class="idx">03</span>Projects</a>
+      <a href="#experience"><span class="idx">04</span>Experience</a>
+      <a href="#contact"><span class="idx">05</span>Contact</a>
     </div>
     <button class="navtoggle" id="navtoggle">MENU</button>
   </div>
@@ -205,31 +207,30 @@
 
 <header class="hero">
   <div class="wrap">
-    <div class="terminal" id="terminal"></div>
     <h1>Asyam Udaya Sani<br><span class="accent">Computer Engineer.</span></h1>
-    <p class="tagline">Mahasiswa Teknik Komputer yang fokus pada sistem otonom, teknologi drone, dan integrasi infrastruktur IoT untuk aplikasi robotika dunia nyata — dari sensor fusion hingga sistem telemetri berbasis cloud.</p>
+    <p class="tagline">Computer Engineering student focused on autonomous systems, drone technology development, and IoT infrastructure integration for real-world robotics applications — from sensor fusion to cloud-connected telemetry systems.</p>
     <div class="cta-row">
-      <a href="#projects" class="btn">Lihat Proyek →</a>
-      <a href="#contact" class="btn ghost">Hubungi Saya</a>
+      <a href="#projects" class="btn">View Projects →</a>
+      <a href="#contact" class="btn ghost">Contact Me</a>
     </div>
   </div>
 </header>
 
 <section id="about">
   <div class="wrap reveal">
-    <div class="sec-label">01 / Tentang</div>
-    <h2 class="sec-title">Profil Singkat</h2>
+    <div class="sec-label">01 / About</div>
+    <h2 class="sec-title">Profile</h2>
     <div class="about-grid">
       <div>
-        <p>Mahasiswa Teknik Komputer aktif yang berfokus pada sistem otonom, pengembangan teknologi drone, dan integrasi infrastruktur IoT untuk aplikasi robotika dunia nyata. Antusias membangun solusi otonom aerial, sensor fusion tingkat lanjut, dan sistem telemetri berbasis cloud.</p>
-        <p>Rasa ingin tahu yang tinggi dan kemauan mempelajari lanskap teknis baru menjadi pendorong utama perjalanan rekayasa saya. Terbiasa berkontribusi pada proyek teknis mutakhir, dengan fokus pada pembuatan produk yang tangguh dan berorientasi solusi, serta berkembang dalam lingkungan R&D yang dinamis dan kolaboratif.</p>
+        <p>Active Computer Engineering student specializing in autonomous systems, drone technology development, and IoT infrastructure integration for real-world robotics applications. Passionate about building aerial autonomous solutions, advanced sensor fusion, and cloud-connected telemetry systems.</p>
+        <p>Driven by high curiosity and a willingness to master new technical landscapes, with a strong focus on creating robust, problem-solving products. Thrives in dynamic, collaborative R&D environments that foster technical innovation and collective problem solving.</p>
       </div>
       <div class="specs">
-        <div><span>Lokasi</span><span>Malang, Indonesia</span></div>
-        <div><span>Fokus</span><span>Autonomous Systems / IoT</span></div>
-        <div><span>Pendidikan</span><span>S1 Teknik Komputer — UB</span></div>
-        <div><span>IPK</span><span>3.69 / 4.00</span></div>
-        <div><span>Status</span><span>Terbuka untuk kerja/magang</span></div>
+        <div><span>Location</span><span>Malang, Indonesia</span></div>
+        <div><span>Focus</span><span>Autonomous Systems / IoT</span></div>
+        <div><span>Education</span><span>B.Eng. Computer Engineering</span></div>
+        <div><span>GPA</span><span>3.69 / 4.00</span></div>
+        <div><span>Status</span><span>Open to work / internship</span></div>
       </div>
     </div>
   </div>
@@ -237,74 +238,98 @@
 
 <section id="skills">
   <div class="wrap reveal">
-    <div class="sec-label">02 / Keahlian</div>
-    <h2 class="sec-title">Tumpukan Teknologi</h2>
+    <div class="sec-label">02 / Skills</div>
+    <h2 class="sec-title">Technical Skills</h2>
     <div class="skill-cols">
       <div class="skill-col">
-        <h3>HARDWARE / EMBEDDED</h3>
+        <h3>ROBOTICS</h3>
         <div class="tag-row">
-          <span class="tag">Jetson Orin Nano</span>
-          <span class="tag">LiDAR / IMU</span>
-          <span class="tag">Brushless Motor / ESC</span>
-          <span class="tag">Power Distribution</span>
-          <span class="tag">Avionics Wiring</span>
+          <span class="tag">ArduPilot</span>
+          <span class="tag">PX4</span>
+          <span class="tag">ROS</span>
+          <span class="tag">SLAM</span>
+          <span class="tag">Mission Planner</span>
         </div>
       </div>
       <div class="skill-col">
-        <h3>SOFTWARE</h3>
+        <h3>IOT — HARDWARE & EDGE</h3>
         <div class="tag-row">
-          <span class="tag">C++</span>
-          <span class="tag">Python</span>
-          <span class="tag">ROS 2</span>
+          <span class="tag">ESP32</span>
+          <span class="tag">Raspberry Pi</span>
+          <span class="tag">Embedded AI</span>
+          <span class="tag">Telemetry Pipelines</span>
+        </div>
+      </div>
+      <div class="skill-col">
+        <h3>IOT — CLOUD & INFRASTRUCTURE</h3>
+        <div class="tag-row">
           <span class="tag">FastAPI</span>
-          <span class="tag">SLAM / FAST-LIO</span>
-        </div>
-      </div>
-      <div class="skill-col">
-        <h3>INFRASTRUKTUR & TOOLS</h3>
-        <div class="tag-row">
+          <span class="tag">Redis</span>
+          <span class="tag">Prometheus</span>
           <span class="tag">Docker</span>
-          <span class="tag">PostgreSQL / Redis</span>
-          <span class="tag">RabbitMQ</span>
-          <span class="tag">Prometheus / Grafana</span>
-          <span class="tag">k6</span>
+          <span class="tag">Grafana</span>
+          <span class="tag">MQTT</span>
         </div>
       </div>
+    </div>
+    <div class="tag-row" style="margin-top:32px;">
+      <span class="tag">🇮🇩 Indonesian (Native)</span>
+      <span class="tag">🇬🇧 English — TOEIC 925/990</span>
     </div>
   </div>
 </section>
 
 <section id="projects">
   <div class="wrap reveal">
-    <div class="sec-label">03 / Proyek</div>
-    <h2 class="sec-title">Proyek Pilihan</h2>
+    <div class="sec-label">03 / Projects</div>
+    <h2 class="sec-title">Selected Projects</h2>
     <div class="proj-grid">
       <div class="proj-card">
-        <div class="proj-id">U1</div>
-        <h3>VelocisQRIS</h3>
-        <p>Mesin optimasi QRIS asynchronous berthroughput tinggi. Mengorkestrasi arsitektur 7 microservice terpisah dengan Docker Compose, lengkap dengan dashboard performa di Grafana untuk analisis bottleneck load-testing — berhasil menekan p95 tail latency 99%, dari 5.500ms menjadi 350ms.</p>
-        <div class="proj-stack"><span>FastAPI</span><span>Redis</span><span>RabbitMQ</span><span>PostgreSQL</span><span>Docker</span><span>Grafana</span><span>k6</span></div>
+        <div class="proj-img"><span class="placeholder-txt">Project U1 image<br>replace with images/proj1.jpg</span></div>
+        <div class="proj-id">U1 · Undergraduate Thesis</div>
+        <h3>2D to 3D Mechatronic LiDAR Conversion</h3>
+        <p>Constructed and evaluated a custom 3D spatial mapping payload by designing a mechanical pitching mechanism that converts a 2D RPLidar C1 into a high-density 3D scanner. Implemented the FAST-LIO SLAM framework for tightly-coupled sensor fusion across LiDAR, IMU, and stepper motors to achieve high-precision odometry.</p>
+        <div class="proj-stack"><span>RPLidar C1</span><span>FAST-LIO</span><span>SLAM</span><span>Mechatronics</span></div>
         <div class="proj-links"><a href="#">GitHub →</a></div>
       </div>
       <div class="proj-card">
+        <div class="proj-img"><span class="placeholder-txt">Project U2 image<br>replace with images/proj2.jpg</span></div>
         <div class="proj-id">U2</div>
-        <h3>AkashaNetra</h3>
-        <p>Sistem pemetaan spasial 3D adaptif untuk UAV. Membangun struktur node modular berperforma tinggi di ROS 2 Jazzy dengan C++ untuk streaming data spasial real-time, serta mengimplementasikan FAST-LIO SLAM untuk sensor fusion LiDAR, IMU, dan motor stepper demi odometri dan pemetaan 3D presisi tinggi.</p>
-        <div class="proj-stack"><span>ROS 2</span><span>C++</span><span>Python</span><span>SLAM</span><span>FAST-LIO</span><span>LiDAR</span></div>
+        <h3>VelocisQRIS — Optimization Engine</h3>
+        <p>High-throughput asynchronous QRIS optimization engine built with a cross-disciplinary team, serving as Monitoring Engineer to architect and deploy an end-to-end system observability framework. Designed interactive performance dashboards in Grafana with PromQL, validating a 99% reduction in p95 tail latency from 5,500ms to 350ms.</p>
+        <div class="proj-stack"><span>Grafana</span><span>PromQL</span><span>k6</span><span>Docker</span></div>
         <div class="proj-links"><a href="#">GitHub →</a></div>
       </div>
       <div class="proj-card">
+        <div class="proj-img"><span class="placeholder-txt">Project U3 image<br>replace with images/proj3.jpg</span></div>
         <div class="proj-id">U3</div>
-        <h3>Mahameru</h3>
-        <p>Quadcopter VTOL otonom berbasis LiDAR, dikembangkan bersama tim multidisipliner. Merancang arsitektur distribusi daya listrik dan pengkabelan avionik secara penuh, serta ikut merancang integrasi hardware komputer onboard Jetson Orin Nano dengan sensor proximity LiDAR.</p>
-        <div class="proj-stack"><span>Jetson Orin Nano</span><span>Brushless Motor</span><span>ESC</span><span>LiDAR</span><span>Power Distribution</span></div>
+        <h3>Autonomous Heavy-Lift VTOL Hexacopter</h3>
+        <p>Architected the complete electrical power distribution and avionics wiring layout for a heavy-lift hexacopter drone, ensuring full autonomous flight readiness. Interfaced and calibrated a Cube Orange flight controller running ArduPilot, integrating telemetry links, sensor modules, and automated fail-safe protocols.</p>
+        <div class="proj-stack"><span>Cube Orange</span><span>ArduPilot</span><span>Power Distribution</span><span>Avionics</span></div>
         <div class="proj-links"><a href="#">GitHub →</a></div>
       </div>
       <div class="proj-card">
+        <div class="proj-img"><span class="placeholder-txt">Project U4 image<br>replace with images/proj4.jpg</span></div>
         <div class="proj-id">U4</div>
-        <h3>IoT Environmental Monitoring System</h3>
-        <p>Sistem pemantauan lingkungan IoT end-to-end terintegrasi Embedded AI untuk melacak kondisi ruang secara berkelanjutan demi preservasi arsip dan dokumen kritis di Arsip Negara RI. Membangun pipeline telemetri hardware-to-cloud dengan transmisi data sensor yang andal dan latensi rendah.</p>
-        <div class="proj-stack"><span>Embedded AI</span><span>IoT</span><span>Cloud Telemetry</span></div>
+        <h3>IoT-Based Archive Environmental Telemetry Node</h3>
+        <p>Developed an end-to-end IoT environmental telemetry node using ESP32 to sample climate metrics and transmit structured JSON payloads via fault-tolerant MQTT logic. Deployed a containerized TIG Stack (Telegraf, InfluxDB, Grafana) with Docker Compose for time-series processing and real-time alerting.</p>
+        <div class="proj-stack"><span>ESP32</span><span>MQTT</span><span>TIG Stack</span><span>Docker</span></div>
+        <div class="proj-links"><a href="#">GitHub →</a></div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-img"><span class="placeholder-txt">Project U5 image<br>replace with images/proj5.jpg</span></div>
+        <div class="proj-id">U5</div>
+        <h3>Autonomous Wall-Tracing Mobile Robot</h3>
+        <p>Developed an autonomous wall-following mobile robot using an ESP32 microcontroller and dual HC-SR04 ultrasonic sensors for spatial collision avoidance. Implemented a closed-loop PID control algorithm in C++ to dynamically adjust motor speeds via hardware PWM, maintaining optimal distance along side walls.</p>
+        <div class="proj-stack"><span>ESP32</span><span>HC-SR04</span><span>PID Control</span><span>C++</span></div>
+        <div class="proj-links"><a href="#">GitHub →</a></div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-img"><span class="placeholder-txt">Project U6 image<br>replace with images/proj6.jpg</span></div>
+        <div class="proj-id">U6</div>
+        <h3>ESP32 Motion & Gesture Controller for FPS</h3>
+        <p>Built a custom motion-based game controller using an ESP32, MPU6050 gyroscope, analog joystick, and vibration sensor to translate physical motion into OS-level input events for FPS games. Engineered a Python backend pipeline (pyserial + pydirectinput) converting gyro data into mouse aiming and edge-triggered WASD input.</p>
+        <div class="proj-stack"><span>ESP32</span><span>MPU6050</span><span>Python</span><span>pydirectinput</span></div>
         <div class="proj-links"><a href="#">GitHub →</a></div>
       </div>
     </div>
@@ -313,33 +338,43 @@
 
 <section id="experience">
   <div class="wrap reveal">
-    <div class="sec-label">04 / Pengalaman</div>
-    <h2 class="sec-title">Riwayat Kerja & Pendidikan</h2>
+    <div class="sec-label">04 / Experience</div>
+    <h2 class="sec-title">Work & Education History</h2>
     <div class="timeline">
       <div class="tl-item">
-        <div class="tl-meta">Juli 2026 — Sekarang</div>
+        <div class="tl-meta">July 2026 — Present</div>
         <h3>IoT Engineer Intern</h3>
-        <p>Arsip Negara Republik Indonesia, Jakarta — merancang dan menerapkan sistem monitoring lingkungan IoT terintegrasi Embedded AI, serta membangun pipeline telemetri hardware-to-cloud yang andal.</p>
+        <p>Arsip Negara Republik Indonesia (National Archives of Indonesia), Jakarta — designed and deployed an IoT environmental monitoring system across critical archive storage facilities, building hardware-to-cloud telemetry pipelines via MQTT with 99.9% uptime, &lt;300ms latency, and zero-loss logging.</p>
       </div>
       <div class="tl-item">
-        <div class="tl-meta">Januari 2026 — Sekarang</div>
+        <div class="tl-meta">January 2026 — Present</div>
+        <h3>Vice Chairman — Robotics & AI UKM</h3>
+        <p>University of Brawijaya — co-led strategic preparation of robotics divisions representing the university at the national Kontes Robot Indonesia (KRI), consolidated 5 robotics and AI research groups under one unified body, and designed the recruitment process for 130+ applicants.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-meta">January 2026 — Present</div>
         <h3>Mentor Electrical Engineer — Atyabrama</h3>
-        <p>Robotiik FILKOM, Universitas Brawijaya — menjadi mentor teknis divisi elektrikal, membimbing tim dalam merancang, merakit, dan menguji arsitektur inti drone otonom.</p>
+        <p>Robotiik FILKOM, University of Brawijaya — mentored a cross-functional team of 10 undergraduate engineers preparing for the Technology Development division at the national Kontes Robot Terbang Indonesia (KRTI) 2026.</p>
       </div>
       <div class="tl-item">
-        <div class="tl-meta">Januari 2026 — Sekarang</div>
-        <h3>Vice Chairman</h3>
-        <p>Robotics & AI UKM, Universitas Brawijaya — memimpin perencanaan strategis dan eksekusi Open Recruitment, merancang alur rekrutmen dan proses seleksi untuk lebih dari 150 pelamar.</p>
+        <div class="tl-meta">July — October 2024</div>
+        <h3>Vice Facilitator and Speaker Division</h3>
+        <p>Robotiik Mengabdi, FILKOM Brawijaya — developed instructional presentations and learning modules on embedded systems for high school students.</p>
       </div>
       <div class="tl-item">
-        <div class="tl-meta">Agustus 2023 — Sekarang</div>
-        <h3>S1 Teknik Komputer</h3>
-        <p>Universitas Brawijaya, Malang — IPK 3.69/4.00 (semester 1–6).</p>
+        <div class="tl-meta">June — November 2024</div>
+        <h3>Staff, Design, Documentation & Multimedia</h3>
+        <p>Robotiik Beginner, FILKOM Brawijaya — created promotional materials for the Open Recruitment campaign and documented the full event lifecycle.</p>
       </div>
       <div class="tl-item">
-        <div class="tl-meta">Juli 2020 — Juni 2023</div>
-        <h3>Teknik Komputer dan Jaringan</h3>
-        <p>SMKN 3 Jakarta — sekolah menengah kejuruan bidang komputer dan jaringan.</p>
+        <div class="tl-meta">August 2023 — Present</div>
+        <h3>B.Eng. Computer Engineering</h3>
+        <p>University of Brawijaya, Malang — GPA 3.69/4.00 (1st–6th semester).</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-meta">July 2020 — June 2023</div>
+        <h3>Computer and Network Engineering</h3>
+        <p>SMKN 3 Jakarta — vocational high school, computer and network engineering track.</p>
       </div>
     </div>
   </div>
@@ -347,37 +382,24 @@
 
 <section id="contact">
   <div class="wrap reveal">
-    <div class="sec-label">05 / Kontak</div>
-    <h2 class="sec-title">Mari Terhubung</h2>
+    <div class="sec-label">05 / Contact</div>
+    <h2 class="sec-title">Let's Connect</h2>
     <div class="contact-box">
-      <p>Terbuka untuk peluang, kolaborasi riset, atau diskusi seputar sistem otonom, drone, dan infrastruktur IoT. Kirim pesan lewat email atau telepon di bawah ini.</p>
+      <p>Open to opportunities, research collaboration, or a conversation about autonomous systems, drones, and IoT infrastructure. Reach out by email or phone below.</p>
       <a href="mailto:mcstufin716@gmail.com" class="btn">mcstufin716@gmail.com</a>
       <div class="contact-links">
         <a href="tel:+6281776871272">+62 817-7687-1272</a>
         <a href="#">GitHub</a>
-        <a href="#">LinkedIn</a>
+        <a href="https://linkedin.com/in/asyamudayasani" target="_blank">LinkedIn</a>
         <a href="#">CV (PDF)</a>
       </div>
     </div>
   </div>
 </section>
 
-<footer>© 2026 Asyam Udaya Sani. Dibuat dengan HTML &amp; CSS.</footer>
+<footer>© 2026 Asyam Udaya Sani. Built with HTML &amp; CSS.</footer>
 
 <script>
-  // typing terminal effect
-  const line = "> whoami";
-  const el = document.getElementById('terminal');
-  let i = 0;
-  function type(){
-    if(i <= line.length){
-      el.innerHTML = line.slice(0,i) + '<span class="caret"></span>';
-      i++;
-      setTimeout(type, 60);
-    }
-  }
-  type();
-
   // mobile nav toggle
   document.getElementById('navtoggle').addEventListener('click', () => {
     document.getElementById('navlinks').classList.toggle('open');
